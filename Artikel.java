@@ -8,12 +8,21 @@
 public class Artikel
 {
     private String naam;
-    private Double prijs;
+    private int prijs;
+    
+    /**
+     * Lege constructor voor leertaak 2
+     */
+    public Artikel()
+    {
+        naam = "Onbekend";
+        prijs = 0;
+    }
 
     /**
      * Constructor for objects of class Artikel
      */
-    public Artikel(String naamArtikel, Double prijsArtikel)
+    public Artikel(String naamArtikel, int prijsArtikel)
     {
         naam = naamArtikel;
         prijs = prijsArtikel;
@@ -30,7 +39,7 @@ public class Artikel
     /**
      * getter voor PrijsArtikel
      */
-    public Double getPrijs()
+    public int getPrijs()
     {
         return prijs;
     }
@@ -38,17 +47,17 @@ public class Artikel
     /**
      * setter voor NaamArtikel
      */
-    public void setNaamArtikel(String Naam)
+    public void setNaamArtikel(String naam)
     {
-        naam = Naam;
+        naam = this.naam;
     }
     
     /**
      * setter voor PrijsArtikel
      */
-    public void setPrijsArtikel(Double Prijs)
+    public void setPrijsArtikel(int prijs)
     {
-        prijs = Prijs;
+        prijs = this.prijs;
     }
     
     public void drukAf()

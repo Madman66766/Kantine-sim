@@ -7,63 +7,136 @@
  */
 public class Persoon
 {
-    private String burgerservicenummer, voornaam, achternaam;
+    private String bsn, voorNaam, achternaam;
     private int dag, maand, jaar;
     private char geslacht;
     
     /**
+     * Constructor for objects with no parameters of class Persoon
+     */
+    public Persoon()
+    {
+        setBSN(null);
+        setVoornaam(null);
+        setAchternaam(null);
+        setGeboortedatum(0, 0, 0);
+        setGeslacht('O');
+    }
+    
+    /**
      * Constructor for objects of class Persoon
      */
-    public Persoon(String bsnPersoon, String voornaamPersoon, String achternaamPersoon, int dagPersoon, int maandPersoon, int jaarPersoon, char geslachtPersoon)
+    public Persoon(String bsnPersoon, String voorNaamPersoon, String achternaamPersoon, int dagPersoon, int maandPersoon, int jaarPersoon, char geslachtPersoon)
     {
-        burgerservicenummer = bsnPersoon;
-        voornaam = voornaamPersoon;
-        achternaam = achternaamPersoon;
-        dag = dagPersoon;
-        maand = maandPersoon;
-        jaar = jaarPersoon;
-        geslacht = geslachtPersoon;
-        setBSN(burgerservicenummer);
-        setVoornaam(voornaamPersoon);
+        setBSN(bsnPersoon);
+        setVoornaam(voorNaamPersoon);
         setAchternaam(achternaamPersoon);
         setGeboortedatum(dagPersoon, maandPersoon, jaarPersoon);
         setGeslacht(geslachtPersoon);
+    }
+    
+    /**
+     * Checks if (day >= 1 && day <= 28) for schrikkeljaar
+     */
+    private Boolean checkDays(int dag) {
+        if(this.dag == 29) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    /**
+     * Checks if jaar is a schrikkeljaar and returns true if (days >= 1 && days <= 29)
+     */
+    private Boolean isSchrikkelJaarValid(int dag, int jaar) {
+        if(this.dag < 1 && this.dag > 29) {
+            return false;
+        }
+        if(this.jaar % 4 == 0) {
+            if(this.jaar % 100 == 0) {
+                if(this.jaar % 400 == 0) {
+                    return true;
+                } else {
+                    return checkDays(this.dag);
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return checkDays(this.dag);
+        }
+    }
+    
+    /**
+     * Prints error message.
+     */
+    private void error() {
+        System.out.println("An error occurred. Please try again.");
+    }
+    
+    /**
+     * Checks if date is correct for day, month and year.
+     */
+    private Boolean checkDate(int dag, int maand, int jaar) {
+        if(this.jaar < 1900 || this.jaar > 2100) {
+            return false;
+        }
+        if(this.dag < 1){
+            return false;
+        }
+        if(this.maand < 1 || this.maand > 12) {
+            return false;
+        }
+        switch(this.maand) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                if(this.dag > 31) {
+                    return false;
+                }
+                break;
+            case 2:
+                if(!isSchrikkelJaarValid(this.dag, this.jaar)) {
+                    return false;
+                }
+                break;
+            default:
+                if(this.dag > 30) {
+                    return false;
+                }
+                break;
+        }
+        return true;
     }
 
     /**
      * setter voor BSN
      */
-    public void setBSN(String bsn)
+    public void setBSN(String newBsn)
     {
-        if(bsn.length() == 9)
-        {
-         
-          burgerservicenummer = bsn;
-          System.out.println("BSN is veranderd naar: " + bsn);
+        if(newBsn.length() == 9) {
+            bsn = newBsn;
+        } else {
+            bsn = "";
+            error();
         }
-        else
-        {
-            burgerservicenummer = "";
-            System.out.println("BSN is veranderd naar: " + "Onbekend");
-        }
-           
     }
     
     /**
-     * setter voor voornaam
+     * setter voor voorNaam
      */
-    public void setVoornaam(String voorNaam)
+    public void setVoornaam(String newVoorNaam)
     {
-        
-        if(voorNaam == "")
-        {
-            voornaam = "";
-            System.out.println("Voornaam niet ingevuld");
-        }
-        else
-        {
-            voornaam = voorNaam;
-            System.out.println("Voornaam veranderd naar: " + voornaam);
+        if(newVoorNaam == "") {
+            voorNaam = "";
+        } else {
+            voorNaam = newVoorNaam;
+            error();
         }
     }
     
@@ -76,12 +149,11 @@ public class Persoon
         if(achterNaam == "")
         {
             achternaam = "";
-            System.out.println("Achternaam niet ingevuld");
         }
         else
         {
             achternaam = achterNaam;
-            System.out.println("Achternaam veranderd naar: " + achternaam);
+            error();
         }
     }
     
@@ -90,117 +162,15 @@ public class Persoon
      */
     public void setGeboortedatum(int dagDatum, int maandDatum, int jaarDatum)
     {
-        if(dagDatum >= 1)
-        {
+        if(checkDate(dagDatum, maandDatum, jaarDatum)) {
             dag = dagDatum;
-        }
-        else
-        {
-            setDatumnull();
-        }
-        
-        if(maandDatum >= 1 && maandDatum <= 12)
-        {
             maand = maandDatum;
-        }
-        else
-        {
-            setDatumnull();
-        }
-        
-        if(jaarDatum >= 1900 && jaarDatum <= 2100)
-        {
             jaar = jaarDatum;
-        }
-        else
-        {
-            setDatumnull();
-        }
-        
-        switch(maandDatum)
-        {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-            if(dagDatum <= 31)
-            {
-                dag = dagDatum;
-            }
-            else
-            {
-                setDatumnull();
-            }
-            break;
-            
-            case 2:
-            if(jaarDatum % 4 == 0) 
-            {
-                if((jaarDatum % 100 == 0) && (jaarDatum % 400 != 0))
-                {
-                    if(dagDatum <= 28)
-                    {
-                        dag = dagDatum;
-                    }
-                    else
-                    {
-                        setDatumnull();
-                    }
-                }
-                else
-                {
-                    if(dagDatum <= 29)
-                    {
-                        dag = dagDatum;
-                    }
-                    else
-                    {
-                        setDatumnull();
-                    }
-                }
-            }
-            else
-            {
-                if(dagDatum <= 28)
-                {
-                    dag = dagDatum;
-                }
-                else
-                {
-                    setDatumnull();
-                }
-            }
-            break;
-            
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-            if(dagDatum <= 30)
-            {
-                dag = dagDatum;
-            }
-            else
-            {
-                setDatumnull();
-            }
-            break;
-            
-            default:
-             setDatumnull();
-            break;
-            
-        }
-        
-        if(dag == 0 && maand == 0 && jaar == 0){
-            System.out.println("Er is een fout opgetreden met de datum probeer opnieuw");
-        }
-        else
-        {
-            System.out.println(" Dag: " + dag + " Maand: " + maand + " Jaar: " + jaar);
+        } else {
+            dag = 0;
+            maand = 0;
+            jaar = 0;
+            error();
         }
     }
     
@@ -222,12 +192,11 @@ public class Persoon
         if(geslachtGeslacht == 'M' || geslachtGeslacht == 'V')
         {
             geslacht = geslachtGeslacht;
-            System.out.println("Geslacht: " + geslacht);
         }
         else
         {
             geslacht = 'O';
-            System.out.println("Geslacht: Onbekend");
+            error();
         }
     }
     
@@ -249,11 +218,11 @@ public class Persoon
     }
     
     /**
-     * Getter voor voornaam
+     * Getter voor voorNaam
      */
     public String getVoornaam()
     {
-        return voornaam;
+        return voorNaam;
     }
     
     /**
@@ -269,7 +238,7 @@ public class Persoon
      */
     public String getBSN()
     {
-        return burgerservicenummer;
+        return bsn;
     }
     
     /**
