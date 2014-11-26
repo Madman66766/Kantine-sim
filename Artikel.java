@@ -22,10 +22,10 @@ public class Artikel
     /**
      * Constructor for objects of class Artikel
      */
-    public Artikel(String naamArtikel, int prijsArtikel)
+    public Artikel(String naam, int prijs)
     {
-        naam = naamArtikel;
-        prijs = prijsArtikel;
+        this.naam = naam;
+        this.prijs = prijs;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Artikel
      */
     public void setNaamArtikel(String naam)
     {
-        naam = this.naam;
+        this.naam = naam;
     }
     
     /**
@@ -57,7 +57,7 @@ public class Artikel
      */
     public void setPrijsArtikel(int prijs)
     {
-        prijs = this.prijs;
+        this.prijs = prijs;
     }
     
     public void drukAf()

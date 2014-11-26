@@ -7,7 +7,7 @@
  */
 public class Persoon
 {
-    private String bsn, voorNaam, achternaam;
+    private String bsn, voornaam, achternaam;
     private int dag, maand, jaar;
     private char geslacht;
     
@@ -16,7 +16,7 @@ public class Persoon
      */
     public Persoon()
     {
-        setBSN(null);
+        setBSN("");
         setVoornaam(null);
         setAchternaam(null);
         setGeboortedatum(0, 0, 0);
@@ -26,13 +26,13 @@ public class Persoon
     /**
      * Constructor for objects of class Persoon
      */
-    public Persoon(String bsnPersoon, String voorNaamPersoon, String achternaamPersoon, int dagPersoon, int maandPersoon, int jaarPersoon, char geslachtPersoon)
+    public Persoon(String bsn, String voornaam, String achternaam, int dag, int maand, int jaar, char geslacht)
     {
-        setBSN(bsnPersoon);
-        setVoornaam(voorNaamPersoon);
-        setAchternaam(achternaamPersoon);
-        setGeboortedatum(dagPersoon, maandPersoon, jaarPersoon);
-        setGeslacht(geslachtPersoon);
+        setBSN(bsn);
+        setVoornaam(voornaam);
+        setAchternaam(achternaam);
+        setGeboortedatum(dag, maand, jaar);
+        setGeslacht(geslacht);
     }
     
     /**
@@ -117,12 +117,12 @@ public class Persoon
     /**
      * setter voor BSN
      */
-    public void setBSN(String newBsn)
+    public void setBSN(String bsn)
     {
-        if(newBsn.length() == 9) {
-            bsn = newBsn;
+        if(bsn.length() == 9) {
+            this.bsn = bsn;
         } else {
-            bsn = "";
+            this.bsn = "";
             error();
         }
     }
@@ -130,42 +130,40 @@ public class Persoon
     /**
      * setter voor voorNaam
      */
-    public void setVoornaam(String newVoorNaam)
+    public void setVoornaam(String voornaam)
     {
-        if(newVoorNaam == "") {
-            voorNaam = "";
+        if(voornaam == "") {
+            this.voornaam = "";
         } else {
-            voorNaam = newVoorNaam;
-            error();
+            this.voornaam = voornaam;
         }
     }
     
     /**
      * setter voor achternaam
      */
-    public void setAchternaam(String achterNaam)
+    public void setAchternaam(String achternaam)
     {
         
-        if(achterNaam == "")
+        if(achternaam == "")
         {
-            achternaam = "";
+            this.achternaam = "";
         }
         else
         {
-            achternaam = achterNaam;
-            error();
+            this.achternaam = achternaam;
         }
     }
     
     /**
      * setter voor de geboortedatum(dag, maand, jaar)
      */
-    public void setGeboortedatum(int dagDatum, int maandDatum, int jaarDatum)
+    public void setGeboortedatum(int dag, int maand, int jaar)
     {
-        if(checkDate(dagDatum, maandDatum, jaarDatum)) {
-            dag = dagDatum;
-            maand = maandDatum;
-            jaar = jaarDatum;
+        if(checkDate(dag, maand, jaar)) {
+            this.dag = dag;
+            this.maand = maand;
+            this.jaar = jaar;
         } else {
             dag = 0;
             maand = 0;
@@ -186,15 +184,15 @@ public class Persoon
     /**
      * setter voor geslacht
      */
-    public void setGeslacht(char geslachtGeslacht)
+    public void setGeslacht(char geslacht)
     {
-        if(geslachtGeslacht == 'M' || geslachtGeslacht == 'V')
+        if(geslacht == 'M' || geslacht == 'V')
         {
-            geslacht = geslachtGeslacht;
+            this.geslacht = geslacht;
         }
         else
         {
-            geslacht = 'O';
+            this.geslacht = 'O';
             error();
         }
     }
@@ -221,7 +219,7 @@ public class Persoon
      */
     public String getVoornaam()
     {
-        return voorNaam;
+        return voornaam;
     }
     
     /**

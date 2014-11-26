@@ -2,7 +2,7 @@
 comment0.params=
 comment0.target=Artikel()
 comment0.text=\r\n\ Lege\ constructor\ voor\ leertaak\ 2\r\n
-comment1.params=naamArtikel\ prijsArtikel
+comment1.params=naam\ prijs
 comment1.target=Artikel(java.lang.String,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Artikel\r\n
 comment2.params=

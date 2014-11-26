@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Dienblad()
+comment0.text=\r\n\ Constructor\r\n
+comment1.params=artikel
+comment1.target=void\ voegToe(Artikel)
+comment1.text=\r\n\ Methode\ om\ artikel\ aan\ dienblad\ toe\ te\ voegen*\ @param\ artikel\r\n
+comment2.params=
+comment2.target=int\ getAantalArtikelen()
+comment2.text=\r\n\ Methode\ om\ aantal\ artikelen\ op\ dienblad\ te\ tellen\r\n\ @return\ Het\ aantal\ artikelen\r\n
+numComments=3
