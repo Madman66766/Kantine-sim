@@ -30,7 +30,7 @@ comment17.params=
 comment17.target=void\ drukAf()
 comment17.text=\r\n\ Print\ de\ details\ van\ de\ persoon\ af\r\n
 comment2.params=dag
-comment2.target=java.lang.Boolean\ checkDays(int)
+comment2.target=java.lang.Boolean\ isNot29(int)
 comment2.text=\r\n\ Checks\ if\ (day\ >\=\ 1\ &&\ day\ <\=\ 28)\ for\ schrikkeljaar\r\n
 comment3.params=dag\ jaar
 comment3.target=java.lang.Boolean\ isSchrikkelJaarValid(int,\ int)

@@ -38,8 +38,8 @@ public class Persoon
     /**
      * Checks if (day >= 1 && day <= 28) for schrikkeljaar
      */
-    private Boolean checkDays(int dag) {
-        if(this.dag == 29) {
+    private Boolean isNot29(int dag) {
+        if(dag == 29) {
             return false;
         } else {
             return true;
@@ -50,21 +50,21 @@ public class Persoon
      * Checks if jaar is a schrikkeljaar and returns true if (days >= 1 && days <= 29)
      */
     private Boolean isSchrikkelJaarValid(int dag, int jaar) {
-        if(this.dag < 1 && this.dag > 29) {
+        if(dag < 1 && dag > 29) {
             return false;
         }
-        if(this.jaar % 4 == 0) {
-            if(this.jaar % 100 == 0) {
-                if(this.jaar % 400 == 0) {
+        if(jaar % 4 == 0) {
+            if(jaar % 100 == 0) {
+                if(jaar % 400 == 0) {
                     return true;
                 } else {
-                    return checkDays(this.dag);
+                    return isNot29(dag);
                 }
             } else {
                 return true;
             }
         } else {
-            return checkDays(this.dag);
+            return isNot29(dag);
         }
     }
     
@@ -79,16 +79,16 @@ public class Persoon
      * Checks if date is correct for day, month and year.
      */
     private Boolean checkDate(int dag, int maand, int jaar) {
-        if(this.jaar < 1900 || this.jaar > 2100) {
+        if(jaar < 1900 || jaar > 2100) {
             return false;
         }
-        if(this.dag < 1){
+        if(dag < 1){
             return false;
         }
-        if(this.maand < 1 || this.maand > 12) {
+        if(maand < 1 || maand > 12) {
             return false;
         }
-        switch(this.maand) {
+        switch(maand) {
             case 1:
             case 3:
             case 5:
@@ -96,17 +96,17 @@ public class Persoon
             case 8:
             case 10:
             case 12:
-                if(this.dag > 31) {
+                if(dag > 31) {
                     return false;
                 }
                 break;
             case 2:
-                if(!isSchrikkelJaarValid(this.dag, this.jaar)) {
+                if(!isSchrikkelJaarValid(dag, jaar)) {
                     return false;
                 }
                 break;
             default:
-                if(this.dag > 30) {
+                if(dag > 30) {
                     return false;
                 }
                 break;
@@ -170,7 +170,6 @@ public class Persoon
             dag = 0;
             maand = 0;
             jaar = 0;
-            error();
         }
     }
     
