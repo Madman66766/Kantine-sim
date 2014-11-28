@@ -38,8 +38,15 @@ public class Dienblad
     * op dienblad uit te rekenen
     * @return De totaalprijs
     */
-   // public double getTotaalPrijs() 
-   //{
-       
-   //}
+    public double getTotaalPrijs() 
+   {
+       double totaalprijs;
+       int index;
+       totaalprijs = 0;
+       for(index = artikelen.size(); 0 > index; index--)
+       {
+           totaalprijs = totaalprijs + artikelen.get(index).prijs;
+       }
+       return totaalprijs;
+   }
 }

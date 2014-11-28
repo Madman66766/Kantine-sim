@@ -1,4 +1,4 @@
-
+  
 /**
  * Dit is de Artikel class
  * 
