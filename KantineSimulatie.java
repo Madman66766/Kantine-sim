@@ -4,7 +4,7 @@ public class KantineSimulatie {
      * Constructor
      */
     public KantineSimulatie() {
-         kantine=new Kantine();
+         kantine = new Kantine();
     }
     
     private String tweeDecimalen(int i) {
@@ -33,6 +33,9 @@ public class KantineSimulatie {
     public void simuleer(int dagen) {
         // for lus voor dagen
         for(int i = 0; i < dagen; i++) {
+            Kantine kantine = new Kantine();
+            //Verschrikkelijk fix, maar het werkt...
+            
             // per dag nu even vast 10+i personen naar binnen
             // laten gaan, wordt volgende week veranderd...
             // for lus voor personen
@@ -41,7 +44,7 @@ public class KantineSimulatie {
             }
             // verwerk rij voor de kassa
             kantine.verwerkRijVoorKassa();
-            //toon dagtotalen (artikelen en geld in kassa)
+            // toon dagtotalen (artikelen en geld in kassa)
             System.out.println("[Dag: " + (i + 1) + "]Artikelen: " + kantine.kassa.aantalArtikelen + ", Geld: " + tweeDecimalen(kantine.kassa.geldInKassa));
             // reset de kassa voor de volgende dag
             kantine.resetKassa();

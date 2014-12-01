@@ -19,9 +19,9 @@ public class Kassa {
      * @param persoon die moet afrekenen
      */
     public void rekenAf(Persoon persoon) {
-        //if(persoon.dienblad == null) {
-        //    return;
-        //}
+        if(persoon.dienblad == null) {
+            return;
+        }
         int aantal = 0;
         int totaal = 0;
         for(Artikel a : persoon.dienblad.artikelen) {

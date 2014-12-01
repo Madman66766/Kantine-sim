@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Stack;
 /**
  * Write a description of class Dienblad here.
  * 
@@ -7,13 +7,13 @@ import java.util.ArrayList;
  */
 public class Dienblad 
 {
-   public ArrayList<Artikel> artikelen;
+   public Stack<Artikel> artikelen;
    /**
     * Constructor
     */
    public Dienblad() 
    {
-       artikelen = new ArrayList<Artikel>();
+       artikelen = new Stack<Artikel>();
    }
    
    /**
