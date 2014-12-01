@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=KantineSimulatie()
+comment0.text=\r\n\ Constructor\r\n
+comment1.params=i
+comment1.target=java.lang.String\ tweeDecimalen(int)
+comment2.params=dagen
+comment2.target=void\ simuleer(int)
+comment2.text=\r\n\ Deze\ methode\ simuleert\ een\ aantal\ dagen\ in\ het\ \r\n\ verloop\ van\ de\ kantine\r\n\ @param\ dagen\r\n
+numComments=3

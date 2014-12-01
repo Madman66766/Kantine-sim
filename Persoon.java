@@ -10,7 +10,7 @@ public class Persoon
     private String bsn, voornaam, achternaam;
     private int dag, maand, jaar;
     private char geslacht;
-    private Dienblad dienblad;
+    public Dienblad dienblad;
     
     /**
      * Constructor for objects with no parameters of class Persoon
