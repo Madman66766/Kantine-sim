@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Dienblad 
 {
-   private ArrayList<Artikel> artikelen;
+   public ArrayList<Artikel> artikelen;
    /**
     * Constructor
     */
