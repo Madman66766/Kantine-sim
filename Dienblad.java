@@ -2,12 +2,12 @@ import java.util.ArrayList;
 /**
  * Write a description of class Dienblad here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Serkan Orhan, Jari Germeraad 
+ * @version 1-12-2014
  */
 public class Dienblad 
 {
-    private ArrayList<Artikel> artikelen;
+   private ArrayList<Artikel> artikelen;
    /**
     * Constructor
     */
@@ -38,15 +38,13 @@ public class Dienblad
     * op dienblad uit te rekenen
     * @return De totaalprijs
     */
-    public double getTotaalPrijs() 
+   public int getTotaalPrijs() 
    {
-       double totaalprijs;
-       int index;
-       totaalprijs = 0;
-       for(index = artikelen.size(); 0 > index; index--)
+       int totaal = 0;
+       for(Artikel a : artikelen)
        {
-           totaalprijs = totaalprijs + artikelen.get(index).prijs;
+           totaal += a.getPrijs();
        }
-       return totaalprijs;
+       return totaal;
    }
 }

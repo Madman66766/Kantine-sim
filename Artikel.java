@@ -8,7 +8,7 @@
 public class Artikel
 {
     private String naam;
-    private int prijs;
+    public int prijs;
     
     /**
      * Lege constructor voor leertaak 2
