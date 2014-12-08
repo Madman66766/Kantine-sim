@@ -47,7 +47,7 @@ public class KantineSimulatie {
             // toon dagtotalen (artikelen en geld in kassa)
             System.out.println("[Dag: " + (i + 1) + "]Artikelen: " + kantine.kassa.aantalArtikelen + ", Geld: " + tweeDecimalen(kantine.kassa.geldInKassa));
             // reset de kassa voor de volgende dag
-            kantine.resetKassa();
+            kantine.getKassa().resetKassa();
         }
     }
 }

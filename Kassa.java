@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Kassa {
     public KassaRij kassaRij;
@@ -19,13 +20,13 @@ public class Kassa {
      * @param persoon die moet afrekenen
      */
     public void rekenAf(Persoon persoon) {
-        if(persoon.dienblad == null) {
+        if(persoon.getDienblad() == null) {
             return;
         }
         int aantal = 0;
         int totaal = 0;
-        for(Artikel a : persoon.dienblad.artikelen) {
-            aantal += 1;
+        for(Artikel a : persoon.getDienblad().artikelen) {
+            aantal++;
             totaal += a.getPrijs();
         }
         aantalArtikelen += aantal;
@@ -39,23 +40,22 @@ public class Kassa {
      * is aangeroepen.
      * @return aantal artikelen
      */
-    public int aantalArtikelen() {
+    public int getAantalArtikelen() {
         return aantalArtikelen;
     }
     
     /**
      * Geeft het totaalbedrag van alle artikelen die
      * de kassa zijn gepasseerd, vanaf het moment dat de methode
-     *resetKassa 
-     * is aangeroepen.
+     * resetKassa is aangeroepen.
      * @return hoeveelheid geld in de kassa
      */
-    public int hoeveelheidGeldInKassa() {
+    public int getGeldInKassa() {
         return geldInKassa;
     }
     
     /**
-     * reset de waarden van het aantal gepasseerde artikelen en 
+     * Reset de waarden van het aantal gepasseerde artikelen en 
      * de totale hoeveelheid geld in de kassa.
      */
     public void resetKassa() {

@@ -39,54 +39,18 @@ public class Persoon
     }
     
     /**
+     * 
+     */
+    public Dienblad getDienblad() {
+        return dienblad;
+    }
+    
+    /**
      * Methode om dienblad te koppelen aan een persoon
      * @param dienblad
      */
     public void pakDienblad(Dienblad dienblad) {
         this.dienblad = dienblad;
-    }
-    
-    /**
-     * Methode om artikel te pakken en te plaatsen op het dienblad
-     * @param artikel
-     */
-    public void pakArtikel(Artikel artikel) {
-        if(dienblad == null) {
-            return;
-        }
-        dienblad.artikelen.add(artikel);
-    }
-    
-    /**
-     * Methode om de totaalprijs van de artikelen
-     * op dienblad dat bij de persoon hoort uit te rekenen.
-     * @return De totaalprijs
-     */
-    public int getTotaalPrijs() {
-        if(dienblad == null) {
-            return 0;
-        }
-        int totaal = 0;
-        for(Artikel a : dienblad.artikelen) {
-            totaal += a.getPrijs();
-        }
-        return totaal;
-    }
-    
-    /**
-     * Methode om het aantal artikelen op dienblad dat bij de
-     * persoon hoort te tellen.
-     * @return Het aantal artikelen
-     */
-    public int getAantalArtikelen() {
-        if(dienblad == null) {
-            return 0;
-        }
-        int aantal = 0;
-        for(Artikel a : dienblad.artikelen) {
-            aantal += 1;
-        }
-        return aantal;
     }
     
     /**

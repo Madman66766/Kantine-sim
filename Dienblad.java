@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.util.Iterator;
 /**
  * Write a description of class Dienblad here.
  * 
@@ -8,6 +9,7 @@ import java.util.Stack;
 public class Dienblad 
 {
    public Stack<Artikel> artikelen;
+   
    /**
     * Constructor
     */
@@ -16,35 +18,16 @@ public class Dienblad
        artikelen = new Stack<Artikel>();
    }
    
+   public Iterator<Artikel> getArtikelen() {
+       Iterator<Artikel> artikelLijst = artikelen.iterator();
+       return artikelLijst;
+   }
+   
    /**
     * Methode om artikel aan dienblad toe te voegen* @param artikel
     */
    public void voegToe(Artikel artikel) 
    {
        artikelen.add(artikel);
-   }
-   
-   /**
-    * Methode om aantal artikelen op dienblad te tellen
-    * @return Het aantal artikelen
-    */
-   public int getAantalArtikelen() 
-   { 
-       return artikelen.size();
-   }
-   
-   /**
-    * Methode om de totaalprijs van de artikelen
-    * op dienblad uit te rekenen
-    * @return De totaalprijs
-    */
-   public int getTotaalPrijs() 
-   {
-       int totaal = 0;
-       for(Artikel a : artikelen)
-       {
-           totaal += a.getPrijs();
-       }
-       return totaal;
    }
 }
