@@ -141,7 +141,7 @@ public class Persoon
             this.bsn = bsn;
         } else {
             this.bsn = "";
-            error();
+            
         }
     }
     
@@ -211,7 +211,7 @@ public class Persoon
         else
         {
             this.geslacht = 'O';
-            error();
+            
         }
     }
     

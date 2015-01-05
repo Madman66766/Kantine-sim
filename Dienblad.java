@@ -19,8 +19,7 @@ public class Dienblad
    }
    
    public Iterator<Artikel> getArtikelen() {
-       Iterator<Artikel> artikelLijst = artikelen.iterator();
-       return artikelLijst;
+       return artikelen.iterator();
    }
    
    /**

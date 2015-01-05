@@ -8,7 +8,7 @@
 public class Artikel
 {
     private String naam;
-    public int prijs;
+    public double prijs;
     
     /**
      * Lege constructor voor leertaak 2
@@ -39,7 +39,7 @@ public class Artikel
     /**
      * getter voor PrijsArtikel
      */
-    public int getPrijs()
+    public double getPrijs()
     {
         return prijs;
     }

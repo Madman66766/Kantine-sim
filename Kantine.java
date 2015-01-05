@@ -1,6 +1,9 @@
 public class Kantine {
-    public Kassa kassa;
-    public KassaRij kassaRij;
+    private Kassa kassa;
+    private KassaRij kassaRij;
+    private KantineAanbod kantineaanbod;
+    private Persoon persoon;
+
     /**
      * Constructor
      */
@@ -8,7 +11,7 @@ public class Kantine {
         kassaRij=new KassaRij();
         kassa=new Kassa(kassaRij);
     }
-    
+
     /**
      * In deze methode wordt een Persoon en Dienblad
      * gemaakt en aan elkaar
@@ -17,15 +20,12 @@ public class Kantine {
      * Tenslotte sluit de Persoon zich aan bij de rij 
      * voor de kassa.
      */
-    public void loopPakSluitAan() {
-         Artikel artikel1 = new Artikel("Banaan", 50);
-         Artikel artikel2 = new Artikel("Appel", 40);
-         Dienblad dienblad1 = new Dienblad();
-         dienblad1.voegToe(artikel1);
-         dienblad1.voegToe(artikel2);
-         Persoon persoon1 = new Persoon("000000000", "Henk", "Visser", 8, 11, 1996, 'M');
-         persoon1.pakDienblad(dienblad1);
-         kassaRij.sluitAchteraan(persoon1);
+    public void loopPakSluitAan(Persoon persoon, String[] artikelnamen) {
+        for(int i = 0; i < artikelnamen.length; i++)
+        {
+            persoon.getDienblad().voegToe(kantineaanbod.getArtikel(artikelnamen[i]));
+        }
+        kassaRij.sluitAchteraan(persoon);
     }
     
     /**
@@ -36,15 +36,15 @@ public class Kantine {
             kassa.rekenAf(kassaRij.eerstePersoonInRij());
         }
     }
-    
+
     /**
      * Deze methode telt het geld uit de kassa
      * @return hoeveelheid geld in kassa
      */
-    public int hoeveelheidGeldInKassa() {
-         return kassa.geldInKassa;
+    public double hoeveelheidGeldInKassa() {
+        return kassa.geldInKassa;
     }
-    
+
     /**
      * Deze methode geeft het aantal gepasseerde artikelen.
      * @return het aantal gepasseerde artikelen
@@ -52,12 +52,28 @@ public class Kantine {
     public int aantalArtikelen(){
         return kassa.aantalArtikelen;
     }
-    
+
     /**
      * Returns Kassa type kassa
      * @returns kassa
      */
     public Kassa getKassa() {
         return kassa;
+    }
+
+    /**
+     * getter voor de kantineaanbod
+     */
+    public KantineAanbod getKantineAanbod()
+    {
+        return kantineaanbod;
+    }
+
+    /**
+     * setter voor kantineaanbod
+     */
+    public void setKantineAanbod(KantineAanbod kantineaanbod)
+    {
+        this.kantineaanbod = kantineaanbod;
     }
 }

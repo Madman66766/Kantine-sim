@@ -14,10 +14,10 @@ public class KassaRij {
      * @param persoon
      */
     public void sluitAchteraan(Persoon persoon) {
-        if(kassaRij == null) {
-            return;
-        }
-        kassaRij.add(persoon);
+        //if(kassaRij == null) {
+          //  return;
+        //}
+        this.kassaRij.add(persoon);
     }
     
     /**
@@ -27,15 +27,22 @@ public class KassaRij {
      * @return Eerste persoon in de rij of null
      */
     public Persoon eerstePersoonInRij() {
-        if(kassaRij == null) {
+        if(erIsEenRij() == true) {
+            //return null;
+            Persoon p = kassaRij.get(0);
+            kassaRij.remove(0);
+            return p;
+        }
+        else
+        {
             return null;
         }
-        Persoon p = kassaRij.get(0);
-        kassaRij.remove(0);
-        if(kassaRij.size() == 0) {
-            kassaRij = null;
-        }
-        return p;
+        //Persoon p = kassaRij.get(0);
+        //kassaRij.remove(0);
+        //if(kassaRij.size() == 0) {
+        //    return null;
+        //}
+        //return p;
     }
     
     /**
@@ -46,6 +53,9 @@ public class KassaRij {
         if(kassaRij == null) {
             return false;
         }
+        else
+        {
         return true;
+       }
     }
 }
