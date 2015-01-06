@@ -1,3 +1,0 @@
-5a	Het verschil tussen een 'for-loop' en een 'while-loop' is zeer miniem, maar er wordt
-	ons aangeleerd een 'for-loop' te gebruiken indien wij weten wat het bereik is en een
-	'while-loop' indien dat niet het geval is.

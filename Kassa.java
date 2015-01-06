@@ -20,19 +20,21 @@ public class Kassa {
      * @param persoon die moet afrekenen
      */
     public void rekenAf(Persoon persoon) {
-        if(persoon.getDienblad() == null) {
+        if(persoon == null){
             return;
         }
-        else{
-        int aantal = 0;
-        int totaal = 0;
-        for(Artikel a : persoon.getDienblad().artikelen) {
-            aantal++;
-            totaal += a.getPrijs();
+        if(persoon.getDienblad() == null) {
+            return;
+        } else {
+            int aantal = 0;
+            int totaal = 0;
+            for(Artikel a : persoon.getDienblad().artikelen) {
+                aantal++;
+                totaal += a.getPrijs();
+            }
+            aantalArtikelen += aantal;
+            geldInKassa += totaal;
         }
-        aantalArtikelen += aantal;
-        geldInKassa += totaal;
-      }
     }
     
     /**

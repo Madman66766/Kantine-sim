@@ -67,8 +67,11 @@ public class KantineSimulatie {
             // per dag nu even vast 10+i personen naar binnen
             // laten gaan, wordt volgende week veranderd...
             int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
+            if(kantine.getKassa() == null) {
+                System.out.println("Error: No kassa.");
+            }
             // for lus voor personen
-            for(int j = 0; j < 3; j++){
+            for(int j = 0; j < aantalpersonen; j++){
                 Persoon persoon = new Persoon();
                 Dienblad dienblad = new Dienblad();
                 persoon.pakDienblad(dienblad);
@@ -79,8 +82,13 @@ public class KantineSimulatie {
                 String[] artikelen = geefArtikelNamen(tepakken);
                 
                 kantine.loopPakSluitAan(persoon,artikelen);
-                
+                if(kantine.getKassaRij() != null) {
+                    System.out.println("Persoon was added.");
+                } else {
+                    System.out.println("Persoon was not added.");
+                }
             }
+            System.out.println(kantine.getKassaRij().getKassaRij().size());
             // verwerk rij voor de kassa
             kantine.verwerkRijVoorKassa();
             // toon dagtotalen (artikelen en geld in kassa)

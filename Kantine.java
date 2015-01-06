@@ -28,6 +28,10 @@ public class Kantine {
         kassaRij.sluitAchteraan(persoon);
     }
     
+    public KassaRij getKassaRij() {
+        return kassaRij;
+    }
+    
     /**
      * Deze methode handelt de rij voor de kassa af.
      */
