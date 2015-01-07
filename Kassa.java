@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class Kassa {
     private KassaRij kassaRij;
     private int aantalArtikelen;
-    private int geldInKassa;
+    private double geldInKassa;
     
     /**
      * Constructor
@@ -13,7 +13,7 @@ public class Kassa {
     public Kassa(KassaRij kassaRij) {
         this.kassaRij = kassaRij;
         aantalArtikelen = 0;
-        geldInKassa = 0;
+        geldInKassa = 0.0;
     }
     
     /**
@@ -59,7 +59,7 @@ public class Kassa {
      * resetKassa is aangeroepen.
      * @return hoeveelheid geld in de kassa
      */
-    public int getGeldInKassa() {
+    public double getGeldInKassa() {
         return geldInKassa;
     }
     
@@ -69,6 +69,6 @@ public class Kassa {
      */
     public void resetKassa() {
         aantalArtikelen = 0;
-        geldInKassa = 0;
+        geldInKassa = 0.0;
     }
 }

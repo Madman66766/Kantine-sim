@@ -25,6 +25,10 @@ public class KantineSimulatie {
     // minimum en maximum artikelen per persoon
     private static final int MIN_ARTIKELEN_PER_PERSOON=1;
     private static final int MAX_ARTIKELEN_PER_PERSOON=4;
+    
+    private static final int STUDENT_KANS = 89;
+    private static final int DOCENT_KANS = 10;
+    //private static final int KANTINEMEDEWERKER_KANS = 1;
     /**
      * Constructor
      */
@@ -87,6 +91,8 @@ public class KantineSimulatie {
      * @param dagen
      */
     public void simuleer(int dagen) {
+        int[] aantalPerDag = new int[dagen];
+        double[] omzetPerDag = new double[dagen];
         // for lus voor dagen
         for(int i=0;i<dagen;i++) {
             if(kantine.getKassaRij().kassaRij == null) {
@@ -97,22 +103,17 @@ public class KantineSimulatie {
             int aantalpersonen=getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
             // laat de personen maar komen...
             for(int j=0;j<aantalpersonen;j++) {
-                Persoon persoon = new Persoon();
-                Dienblad dienblad = new Dienblad();
-                persoon.pakDienblad(dienblad);
-                // maak persoon en dienblad aan, koppel ze
-                // bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen=getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);;
-                // genereer de “artikelnummers”, dit zijn indexen
-                // van de artikelnamen array
-                int[] tepakken=getRandomArray(aantalartikelen, 0,
-                        AANTAL_ARTIKELEN-1);
-                // vind de artikelnamen op basis van
-                // de indexen hierboven
-                String[] artikelen=geefArtikelNamen(tepakken);
-                // loop de kantine binnen, pak de gewenste
-                // artikelen, sluit aan
-                kantine.loopPakSluitAan(persoon, artikelen);
+                int kans = getRandomValue(0, 100);
+                if(kans <= STUDENT_KANS) {
+                    Student student = new Student();
+                    behandelPersoon(student);
+                } else if (j <= (STUDENT_KANS + DOCENT_KANS)) {
+                    Docent docent = new Docent();
+                    behandelPersoon(docent);
+                } else {
+                    KantineMedewerker kantineMedewerker = new KantineMedewerker();
+                    behandelPersoon(kantineMedewerker);
+                }
             }
             // verwerk rij voor de kassa
             kantine.verwerkRijVoorKassa();
@@ -122,7 +123,27 @@ public class KantineSimulatie {
             System.out.println("[Dag " + (i + 1) + "]Aantal verkochte artikelen: " + kantine.getKassa().getAantalArtikelen());
             System.out.println("[Dag " + (i + 1) + "]Hoeveelheid geld in kassa: " + kantine.getKassa().getGeldInKassa());
             // reset de kassa voor de volgende dag
+            omzetPerDag[i] = kantine.getKassa().getGeldInKassa();
+            aantalPerDag[i] = kantine.getKassa().getAantalArtikelen();
             kantine.getKassa().resetKassa();
         }
+        System.out.println("[Periode Gemiddelde]Aantal: " + Administratie.berekenGemiddeldAantal(aantalPerDag));
+        System.out.println("[Periode Gemiddelde]Omzet: €" + Administratie.berekenGemiddeldeOmzet(omzetPerDag));
+        for(int i = 0; i < Administratie.DAYS_IN_WEEK; i++) {
+            System.out.println("[Periode Getallen Dag " + (i + 1) + "]Omzet: " + Administratie.berekenDagOmzet(omzetPerDag)[i]);
+        }
+    }
+    
+    /**
+     * Behandelt de persoon, geeft hem een dienblad, vult deze en zet hem achterin de rij.
+     */
+    public void behandelPersoon(Persoon persoon) {
+        Dienblad dienblad = new Dienblad();
+        persoon.pakDienblad(dienblad);
+        int aantalartikelen=getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
+        int[] tepakken=getRandomArray(aantalartikelen, 0, AANTAL_ARTIKELEN-1);
+        String[] artikelen=geefArtikelNamen(tepakken);
+        kantine.loopPakSluitAan(persoon, artikelen);
+        //persoon.drukAf();
     }
 }

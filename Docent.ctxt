@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Docent()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Docent\r\n
+comment1.params=
+comment1.target=void\ drukAf()
+comment1.text=\r\n\ Override\ voor\ drukAf()\ van\ Persoon\r\n
+comment2.params=
+comment2.target=java.lang.String\ getAfkorting()
+comment2.text=\r\n\ getter\ voor\ afkorting\r\n\ \r\n\ @return\ afkorting\r\n
+comment3.params=
+comment3.target=java.lang.String\ getAfdeling()
+comment3.text=\r\n\ getter\ voor\ afdeling\ \r\n\ \r\n\ @return\ afdeling\r\n
+comment4.params=afkorting
+comment4.target=void\ setAfkorting(java.lang.String)
+comment4.text=\r\n\ setter\ afkorting\ \r\n\ \r\n\ @param\ afkorting\ Afkorting\r\n
+comment5.params=afdeling
+comment5.target=void\ setAfdeling(java.lang.String)
+comment5.text=\r\n\ setter\ voor\ afdeling\r\n\ \r\n\ @param\ afdeling\ Afdeling\r\n
+numComments=6
