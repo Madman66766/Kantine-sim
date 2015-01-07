@@ -137,7 +137,7 @@ public class KantineSimulatie {
     /**
      * Behandelt de persoon, geeft hem een dienblad, vult deze en zet hem achterin de rij.
      */
-    public void behandelPersoon(Persoon persoon) {
+    private void behandelPersoon(Persoon persoon) {
         Dienblad dienblad = new Dienblad();
         persoon.pakDienblad(dienblad);
         int aantalartikelen=getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
