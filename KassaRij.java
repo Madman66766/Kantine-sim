@@ -14,7 +14,7 @@ public class KassaRij {
      * @param persoon
      */
     public void sluitAchteraan(Persoon persoon) {
-        this.kassaRij.add(persoon);
+        kassaRij.add(persoon);
     }
     
     /**
@@ -24,22 +24,12 @@ public class KassaRij {
      * @return Eerste persoon in de rij of null
      */
     public Persoon eerstePersoonInRij() {
-        if(erIsEenRij()) {
-            if(kassaRij.size() < 1) {
-                return null;
-            }
-            Persoon p = kassaRij.get(0);
-            kassaRij.remove(0);
-            return p;
-        }
-        else
-        {
+        if(kassaRij == null || kassaRij.size() == 0) {
             return null;
         }
-    }
-    
-    public LinkedList<Persoon> getKassaRij() {
-        return kassaRij;
+        Persoon p = kassaRij.get(0);
+        kassaRij.remove(0);
+        return p;
     }
     
     /**
@@ -47,12 +37,9 @@ public class KassaRij {
      * @return Of er wel of geen rij bestaat
      */
     public boolean erIsEenRij() {
-        if(kassaRij == null) {
+        if(kassaRij == null || kassaRij.size() == 0) {
             return false;
         }
-        else
-        {
         return true;
-        }
     }
 }

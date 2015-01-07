@@ -8,7 +8,7 @@ import java.util.Iterator;
  */
 public class Dienblad 
 {
-   public Stack<Artikel> artikelen;
+   private Stack<Artikel> artikelen;
    
    /**
     * Constructor
@@ -23,7 +23,8 @@ public class Dienblad
    }
    
    /**
-    * Methode om artikel aan dienblad toe te voegen* @param artikel
+    * Methode om artikel aan dienblad toe te voegen
+    * @param artikel
     */
    public void voegToe(Artikel artikel) 
    {

@@ -3,7 +3,8 @@ import java.util.*;
 public class KantineAanbod {
     // interne opslag voorraad
     private HashMap<String, ArrayList<Artikel>> aanbod;
-   
+    private HashMap<String, Integer> beginHoeveelheid;
+    private HashMap<String, Integer> hoeVaakGevuld;
     
     /**
      * Constructor. Het eerste argument is een lijst met artikelnamen,
@@ -13,14 +14,18 @@ public class KantineAanbod {
      */
     public KantineAanbod(String[] artikelnaam, double[] prijs, int[] hoeveelheid) {
         aanbod=new HashMap<String, ArrayList<Artikel>>();
+        beginHoeveelheid = new HashMap<String, Integer>();
+        hoeVaakGevuld = new HashMap<String, Integer>();
         for(int i=0;i<artikelnaam.length;i++) 
         {
             ArrayList<Artikel> artikelen=new ArrayList<Artikel>();
             for(int j=0;j<hoeveelheid[i];j++) 
             {
-                artikelen.add(new Artikel(artikelnaam[i], (int)prijs[i]));
+                artikelen.add(new Artikel(artikelnaam[i], prijs[i]));
             }
             aanbod.put(artikelnaam[i], artikelen);
+            beginHoeveelheid.put(artikelnaam[i], hoeveelheid[i]);
+            hoeVaakGevuld.put(artikelnaam[i], 0);
         }
     }
 
@@ -31,6 +36,10 @@ public class KantineAanbod {
     private ArrayList<Artikel> getArrayList(String productnaam) {
          return aanbod.get(productnaam); 
     }
+    
+    private int getBeginHoeveelheid(String naam) {
+        return beginHoeveelheid.get(naam);
+    }
 
     /**
      * Private methode om een Artikel van de stapel artikelen af te pakken. 
@@ -40,14 +49,21 @@ public class KantineAanbod {
         if (stapel==null) { 
             return null;
         }
-        if (stapel.size()==0)
+        if (stapel.size() == 0)
         {
-           return null;
+            return null;
         }
         else 
         {
             Artikel a=stapel.get(0);
             stapel.remove(0);
+            if(stapel.size() < 1000) {
+                for(int i = stapel.size(); i < getBeginHoeveelheid(a.getNaam()); i++) {
+                    stapel.add(a);
+                }
+                hoeVaakGevuld.put(a.getNaam(), (hoeVaakGevuld.get(a.getNaam()) + 1));
+                System.err.println("Voorraad voor " + a.getNaam() + " was bijgevuld. (" + hoeVaakGevuld.get(a.getNaam()) + ")");
+            }
             return a;
         }
     }

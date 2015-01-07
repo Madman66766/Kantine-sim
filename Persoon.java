@@ -10,7 +10,7 @@ public class Persoon
     private String bsn, voornaam, achternaam;
     private int dag, maand, jaar;
     private char geslacht;
-    public Dienblad dienblad;
+    private Dienblad dienblad;
     
     /**
      * Constructor for objects with no parameters of class Persoon
@@ -87,13 +87,6 @@ public class Persoon
     }
     
     /**
-     * Prints error message.
-     */
-    private void error() {
-        System.out.println("An error occurred. Please try again.");
-    }
-    
-    /**
      * Checks if date is correct for day, month and year.
      */
     private Boolean checkDate(int dag, int maand, int jaar) {
@@ -141,7 +134,6 @@ public class Persoon
             this.bsn = bsn;
         } else {
             this.bsn = "";
-            
         }
     }
     
@@ -211,7 +203,6 @@ public class Persoon
         else
         {
             this.geslacht = 'O';
-            
         }
     }
     

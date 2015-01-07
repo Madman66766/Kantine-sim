@@ -8,7 +8,7 @@
 public class Artikel
 {
     private String naam;
-    public double prijs;
+    private double prijs;
     
     /**
      * Lege constructor voor leertaak 2
@@ -22,7 +22,7 @@ public class Artikel
     /**
      * Constructor for objects of class Artikel
      */
-    public Artikel(String naam, int prijs)
+    public Artikel(String naam, double prijs)
     {
         this.naam = naam;
         this.prijs = prijs;

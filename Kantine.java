@@ -1,9 +1,7 @@
 public class Kantine {
     private Kassa kassa;
     private KassaRij kassaRij;
-    private KantineAanbod kantineaanbod;
-    private Persoon persoon;
-
+    private KantineAanbod kantineAanbod;
     /**
      * Constructor
      */
@@ -11,19 +9,16 @@ public class Kantine {
         kassaRij=new KassaRij();
         kassa=new Kassa(kassaRij);
     }
-
+    
     /**
-     * In deze methode wordt een Persoon en Dienblad
-     * gemaakt en aan elkaar
-     * gekoppeld. Maak twee Artikelen aan en plaats 
-     * deze op het dienblad. 
-     * Tenslotte sluit de Persoon zich aan bij de rij 
-     * voor de kassa.
+     * In deze methode kiest een Persoon met een dienblad
+     * de artikelen in artikelnamen.
+     * @param persoon
+     * @artikelnamen
      */
     public void loopPakSluitAan(Persoon persoon, String[] artikelnamen) {
-        for(int i = 0; i < artikelnamen.length; i++)
-        {
-            persoon.getDienblad().voegToe(kantineaanbod.getArtikel(artikelnamen[i]));
+        for(int i = 0; i < artikelnamen.length; i++) {
+            persoon.getDienblad().voegToe(kantineAanbod.getArtikel(artikelnamen[i]));
         }
         kassaRij.sluitAchteraan(persoon);
     }
@@ -40,44 +35,29 @@ public class Kantine {
             kassa.rekenAf(kassaRij.eerstePersoonInRij());
         }
     }
-
+    
     /**
-     * Deze methode telt het geld uit de kassa
-     * @return hoeveelheid geld in kassa
+     * Returns kantineAanbod
+     * @return kantineAanbod
      */
-    public double hoeveelheidGeldInKassa() {
-        return kassa.geldInKassa;
+    public KantineAanbod getKantineAanbod() {
+        return kantineAanbod;
     }
-
+    
     /**
-     * Deze methode geeft het aantal gepasseerde artikelen.
-     * @return het aantal gepasseerde artikelen
+     * Sets kantineAanbod
+     * 
+     * @param kantineAanbod Aanbod van kantine
      */
-    public int aantalArtikelen(){
-        return kassa.aantalArtikelen;
+    public void setKantineAanbod(KantineAanbod ka) {
+        kantineAanbod = ka;
     }
-
+    
     /**
      * Returns Kassa type kassa
-     * @returns kassa
+     * @return kassa
      */
     public Kassa getKassa() {
         return kassa;
-    }
-
-    /**
-     * getter voor de kantineaanbod
-     */
-    public KantineAanbod getKantineAanbod()
-    {
-        return kantineaanbod;
-    }
-
-    /**
-     * setter voor kantineaanbod
-     */
-    public void setKantineAanbod(KantineAanbod kantineaanbod)
-    {
-        this.kantineaanbod = kantineaanbod;
     }
 }
