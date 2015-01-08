@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Styling()
+comment0.text=\r\n\ Constructor\ voor\ Styling\r\n\ \r\n\ Private,\ omdat\ we\ geen\ instantie\ van\ Styling\ willen.\r\n
+comment1.params=i
+comment1.target=java.lang.String\ getDagNaam(int)
+comment1.text=\r\n\ Get\ de\ naam\ van\ de\ dag\ met\ de\ passende\ dag\ ID.\r\n\ \r\n\ @return\ String\r\n
+numComments=2

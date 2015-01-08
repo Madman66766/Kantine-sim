@@ -9,7 +9,7 @@ public class Administratie {
     public static final int DAYS_IN_WEEK = 7;
     
     private Administratie() {
-        //Empty
+        //Leeg
     }
     
     /**
