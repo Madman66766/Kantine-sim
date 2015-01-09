@@ -5,10 +5,11 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class KantineMedewerker extends Persoon
+public class KantineMedewerker extends Persoon implements KortingskaartHouder
 {
     private boolean magAchterKassa;
     private String medewerkerNummer;
+    private static final double KORTINGS_PERCENTAGE = 35.0;
     
     /**
      * Constructor for KantineMedewerker
@@ -20,11 +21,11 @@ public class KantineMedewerker extends Persoon
     }
     
     /**
-     * Override voor methode drukAf() in Persoon
+     * Override voor methode toString()
      */
-    public void drukAf() {
-        System.out.println(magAchterKassa);
-        System.out.println(medewerkerNummer);
+    public String toString() {
+        return super.toString() + "\nMedewerkernummer: " + medewerkerNummer + "\nMag achter de kassa: "
+                + magAchterKassa;
     }
     
     /**
@@ -32,8 +33,8 @@ public class KantineMedewerker extends Persoon
      * 
      * @param bool Of de kantinemedewerker achter de kassa mag of niet.
      */
-    public void setMagAchterKassa(boolean bool) {
-        magAchterKassa = bool;
+    public void setMagAchterKassa(boolean magAchterKassa) {
+        this.magAchterKassa = magAchterKassa;
     }
     
     /**
@@ -61,5 +62,26 @@ public class KantineMedewerker extends Persoon
      */
     public String getMedewerkerNummer() {
         return medewerkerNummer;
+    }
+    
+    /**
+     * Implementatie voor geefKortingsPercentage()
+     */
+    public double geefKortingsPercentage() {
+        return KORTINGS_PERCENTAGE;
+    }
+    
+    /**
+     * Implementatie voor heeftMaximum()
+     */
+    public boolean heeftMaximum() {
+        return false;
+    }
+    
+    /**
+     * Implementatie voor geefMaximum()
+     */
+    public double geefMaximum() {
+        return 0.0;
     }
 }

@@ -30,16 +30,23 @@ public class Kassa {
             return;
         }
         int aantal = 0;
-        int totaal = 0;
+        double totaal = 0;
         Iterator<Artikel> itr = persoon.getDienblad().getArtikelen();
         while(itr.hasNext()) {
             Artikel i = itr.next();
-            
             aantal++;
             totaal += i.getPrijs();
         }
-        aantalArtikelen += aantal;
-        geldInKassa += totaal;
+        if(persoon instanceof KortingskaartHouder) {
+            checkKorting(persoon, totaal);
+        }
+        if(persoon.getBetaalwijze().betaal(totaal)) {
+            aantalArtikelen += aantal;
+            geldInKassa += totaal;
+        } else {
+            System.out.println("De klant kon de betaling niet afronden.");
+            return;
+        }
     }
     
     /**
@@ -70,5 +77,19 @@ public class Kassa {
     public void resetKassa() {
         aantalArtikelen = 0;
         geldInKassa = 0.0;
+    }
+    
+    /**
+     * Berekent het bedrag wat de persoon als korting mag nemen.
+     */
+    private double checkKorting(Persoon persoon, double totaal) {
+        if((KortingskaartHouder)persoon.heeftMaximum()) {
+            if((totaal * ((100 - geefKortingsPercentage()) / 100)) >= geefMaximum())
+            {
+                totaal -= geefMaximum();
+            } else {
+                totaal *= ((100 - geefKortingsPercentage()) / 100);
+            }
+        }
     }
 }

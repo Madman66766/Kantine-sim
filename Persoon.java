@@ -11,6 +11,7 @@ public class Persoon
     private int dag, maand, jaar;
     private char geslacht;
     private Dienblad dienblad;
+    private Betaalwijze betaalwijze;
     
     /**
      * Constructor for objects with no parameters of class Persoon
@@ -36,6 +37,18 @@ public class Persoon
         setGeboortedatum(dag, maand, jaar);
         setGeslacht(geslacht);
         dienblad = null;
+    }
+    
+    public boolean equals(Object object) {
+        if(this == object) {
+            return true;
+        }
+        if(!(object instanceof Persoon)) {
+            return false;
+        }
+        Persoon other = (Persoon) object;
+        return bsn.equals(other.bsn) && voornaam.equals(other.voornaam) && achternaam.equals(other.achternaam)
+                && dag == other.dag && maand == other.maand && jaar == other.jaar && geslacht == other.geslacht;
     }
     
     /**
@@ -272,14 +285,25 @@ public class Persoon
     }
     
     /**
-     * Print de details van de persoon af
+     * Getter voor betaalwijze
+     * 
+     * @return betaalwijze
      */
-    public void drukAf()
-    {
-        System.out.println("Voornaam: " + getVoornaam());
-        System.out.println("Achternaam: " + getAchternaam());
-        System.out.println("Burgerservicenummer: " + getBSN());
-        System.out.println("Geboortedatum: " + getGeboortedatum());
-        System.out.println("Geslacht: " + getGeslacht());
+    public Betaalwijze getBetaalwijze() {
+        return betaalwijze;
+    }
+    
+    /**
+     * Setter voor betaalwijze
+     * 
+     * @param betaalwijze
+     */
+    public void setBetaalwijze(Betaalwijze betaalwijze) {
+        this.betaalwijze = betaalwijze;
+    }
+    
+    public String toString() {
+        return "\nVoornaam: " + getVoornaam() + "\nAchternaam: " + getAchternaam() + "\nBurgerservicenummer: " + getBSN()
+                + "\nGeboortedatum: " + getGeboortedatum() + "\nGeslacht: " + getGeslacht();
     }
 }

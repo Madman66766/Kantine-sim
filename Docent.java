@@ -5,10 +5,11 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Docent extends Persoon
+public class Docent extends Persoon implements KortingskaartHouder
 {
     private String afkorting;
     private String afdeling;
+    private static final double KORTINGS_PERCENTAGE = 25.0;
 
     /**
      * Constructor for objects of class Docent
@@ -21,11 +22,10 @@ public class Docent extends Persoon
     }
     
     /**
-     * Override voor drukAf() van Persoon
+     * Override voor methode toString()
      */
-    public void drukAf() {
-        System.out.println(afkorting);
-        System.out.println(afdeling);
+    public String toString() {
+        return super.toString() + "\nAfkorting: " + afkorting + "\nAfdeling: " + afdeling;
     }
 
     /**
@@ -66,5 +66,26 @@ public class Docent extends Persoon
     public void setAfdeling(String afdeling)
     {
         this.afdeling = afdeling;
+    }
+    
+    /**
+     * Implementatie voor geefKortingsPercentage()
+     */
+    public double geefKortingsPercentage() {
+        return KORTINGS_PERCENTAGE;
+    }
+    
+    /**
+     * Implementatie voor heeftMaximum()
+     */
+    public boolean heeftMaximum() {
+        return true;
+    }
+    
+    /**
+     * Implementatie voor geefMaximum()
+     */
+    public double geefMaximum() {
+        return 1.0;
     }
 }

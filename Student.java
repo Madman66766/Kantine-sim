@@ -21,11 +21,10 @@ public class Student extends Persoon
     }
     
     /**
-     * Override voor drukAf() in Persoon
+     * Override voor methode toString()
      */
-    public void drukAf() {
-        System.out.println(studentNummer);
-        System.out.println(studieRichting);
+    public String toString() {
+        return super.toString() + "\nStudentnummer: " + studentNummer + "\nstudieRichting" + studieRichting;
     }
 
     /**
