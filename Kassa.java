@@ -38,7 +38,7 @@ public class Kassa {
             totaal += i.getPrijs();
         }
         if(persoon instanceof KortingskaartHouder) {
-            checkKorting(persoon, totaal);
+            totaal = checkKorting(persoon, totaal);
         }
         if(persoon.getBetaalwijze().betaal(totaal)) {
             aantalArtikelen += aantal;
@@ -83,13 +83,14 @@ public class Kassa {
      * Berekent het bedrag wat de persoon als korting mag nemen.
      */
     private double checkKorting(Persoon persoon, double totaal) {
-        if((KortingskaartHouder)persoon.heeftMaximum()) {
-            if((totaal * ((100 - geefKortingsPercentage()) / 100)) >= geefMaximum())
-            {
-                totaal -= geefMaximum();
-            } else {
-                totaal *= ((100 - geefKortingsPercentage()) / 100);
+        KortingskaartHouder kortingskaartHouder = (KortingskaartHouder)persoon;
+        double max = kortingskaartHouder.geefMaximum();
+        double kortingsPercentage = kortingskaartHouder.geefKortingsPercentage();
+        if((kortingskaartHouder.heeftMaximum())) {
+            if(totaal * kortingsPercentage >= max) {
+                return max;
             }
         }
+        return (totaal * kortingsPercentage);
     }
 }

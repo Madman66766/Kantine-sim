@@ -9,7 +9,7 @@ public class Docent extends Persoon implements KortingskaartHouder
 {
     private String afkorting;
     private String afdeling;
-    private static final double KORTINGS_PERCENTAGE = 25.0;
+    private static final double KORTINGS_PERCENTAGE = 0.25;
 
     /**
      * Constructor for objects of class Docent

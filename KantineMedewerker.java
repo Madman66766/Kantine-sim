@@ -9,7 +9,7 @@ public class KantineMedewerker extends Persoon implements KortingskaartHouder
 {
     private boolean magAchterKassa;
     private String medewerkerNummer;
-    private static final double KORTINGS_PERCENTAGE = 35.0;
+    private static final double KORTINGS_PERCENTAGE = 0.35;
     
     /**
      * Constructor for KantineMedewerker
