@@ -38,7 +38,7 @@ public class Kassa {
             totaal += i.getPrijs();
         }
         if(persoon instanceof KortingskaartHouder) {
-            totaal = checkKorting(persoon, totaal);
+            totaal -= checkKorting(persoon, totaal);
         }
         if(persoon.getBetaalwijze().betaal(totaal)) {
             aantalArtikelen += aantal;
