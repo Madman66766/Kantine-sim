@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TeWeinigGeldException()
+comment0.text=\r\n\ lege\ constructor\ voor\ TeWeinigGeldException\r\n
+comment1.params=e
+comment1.target=TeWeinigGeldException(java.lang.Exception)
+comment1.text=\r\n\ Contstructor\ \r\n\ @param\ Exception\ e\r\n
+comment2.params=message
+comment2.target=TeWeinigGeldException(java.lang.String)
+comment2.text=\r\n\ contstructor\ \r\n\ @param\ String\ message\r\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ @override\r\n
+numComments=4

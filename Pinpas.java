@@ -1,3 +1,4 @@
+
 public class Pinpas extends Betaalwijze {
     private double kredietLimiet;
     /**
@@ -14,11 +15,11 @@ public class Pinpas extends Betaalwijze {
     public boolean betaal(double tebetalen) {
         if(saldo >= tebetalen) {
             saldo -= tebetalen;
-            return true;
+            
         } else if((saldo + kredietLimiet) >= tebetalen) {
             kredietLimiet -= (tebetalen - saldo);
             saldo = 0.0;
-            return true;
+            
         }
         return false;
     }

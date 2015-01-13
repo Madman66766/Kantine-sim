@@ -12,6 +12,8 @@ public class Persoon
     private char geslacht;
     private Dienblad dienblad;
     private Betaalwijze betaalwijze;
+    private Pinpas pinpas;
+    private Contant contant;
     
     /**
      * Constructor for objects with no parameters of class Persoon
@@ -24,6 +26,7 @@ public class Persoon
         setGeboortedatum(0, 0, 0);
         setGeslacht('O');
         dienblad = null;
+        setBetaalwijze(pinpas);
     }
     
     /**
