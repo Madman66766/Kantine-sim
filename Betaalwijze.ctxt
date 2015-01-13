@@ -3,6 +3,6 @@ comment0.params=saldo
 comment0.target=void\ setSaldo(double)
 comment0.text=\r\n\ Methode\ om\ krediet\ te\ initialiseren\r\n\ @param\ krediet\r\n
 comment1.params=tebetalen
-comment1.target=boolean\ betaal(double)
+comment1.target=void\ betaal(double)
 comment1.text=\r\n\ Methode\ om\ betaling\ af\ the\ handelen\r\n\ @param\ tebetalen\r\n\ @return\ Boolean\ om\ te\ kijken\ of\ er\ voldoende\ saldo\ is\r\n
 numComments=2

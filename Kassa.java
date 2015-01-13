@@ -40,12 +40,12 @@ public class Kassa {
         if(persoon instanceof KortingskaartHouder) {
             totaal = checkKorting(persoon, totaal);
         }
-        if(persoon.getBetaalwijze().betaal(totaal)) {
+        try {
+            persoon.getBetaalwijze().betaal(totaal);
             aantalArtikelen += aantal;
             geldInKassa += totaal;
-        } else {
-            System.out.println("De klant kon de betaling niet afronden.");
-            return;
+        } catch (TeWeinigGeldException twge) {
+            System.err.println("Exception: (" + persoon.getNaam() + ") " + twge.toString());
         }
     }
     

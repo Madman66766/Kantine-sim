@@ -3,6 +3,6 @@ comment0.params=kredietLimiet
 comment0.target=void\ setKredietLimiet(double)
 comment0.text=\r\n\ Methode\ om\ kredietlimiet\ te\ zetten\r\n\ @param\ kredietlimiet\r\n
 comment1.params=tebetalen
-comment1.target=boolean\ betaal(double)
+comment1.target=void\ betaal(double)
 comment1.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n
 numComments=2

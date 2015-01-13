@@ -12,8 +12,6 @@ public class Persoon
     private char geslacht;
     private Dienblad dienblad;
     private Betaalwijze betaalwijze;
-    private Pinpas pinpas;
-    private Contant contant;
     
     /**
      * Constructor for objects with no parameters of class Persoon
@@ -26,7 +24,12 @@ public class Persoon
         setGeboortedatum(0, 0, 0);
         setGeslacht('O');
         dienblad = null;
-        setBetaalwijze(pinpas);
+        betaalwijze = new Pinpas();
+        betaalwijze.setSaldo(10.0);
+        /*if(betaalwijze instanceof Pinpas) {
+            Pinpas pinpas = (Pinpas)betaalwijze; 
+            pinpas.setKredietLimiet(50.0);
+        }*/
     }
     
     /**
@@ -285,6 +288,15 @@ public class Persoon
             temp = "Onbekend";
         }
         return temp;
+    }
+    
+    /**
+     * Getter voor volledige naam
+     * 
+     * @return volledige naam
+     */
+    public String getNaam() {
+        return voornaam + " " + achternaam;
     }
     
     /**
