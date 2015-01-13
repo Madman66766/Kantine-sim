@@ -77,6 +77,11 @@ dependency31.type=UsesDependency
 dependency32.from=Betaalwijze
 dependency32.to=TeWeinigGeldException
 dependency32.type=UsesDependency
+=======
+dependency30.from=Kassa
+dependency30.to=Docent
+dependency30.type=UsesDependency
+>>>>>>> d29b0616e9f701d5d4e04d6db888a3b186cdadc4
 dependency4.from=KassaRij
 dependency4.to=Persoon
 dependency4.type=UsesDependency
@@ -96,6 +101,7 @@ dependency9.from=Kantine
 dependency9.to=KassaRij
 dependency9.type=UsesDependency
 objectbench.height=100
+<<<<<<< HEAD
 objectbench.width=1037
 package.editor.height=547
 package.editor.width=1244
@@ -103,6 +109,15 @@ package.editor.x=50
 package.editor.y=34
 package.numDependencies=32
 package.numTargets=19
+=======
+objectbench.width=342
+package.editor.height=531
+package.editor.width=549
+package.editor.x=683
+package.editor.y=0
+package.numDependencies=30
+package.numTargets=18
+>>>>>>> d29b0616e9f701d5d4e04d6db888a3b186cdadc4
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
@@ -199,8 +214,13 @@ target15.showInterface=false
 target15.type=ClassTarget
 target15.typeParameters=
 target15.width=80
+<<<<<<< HEAD
 target15.x=550
 target15.y=390
+=======
+target15.x=170
+target15.y=470
+>>>>>>> d29b0616e9f701d5d4e04d6db888a3b186cdadc4
 target16.editor.height=700
 target16.editor.width=900
 target16.editor.x=32
@@ -211,8 +231,13 @@ target16.naviview.expanded=false
 target16.showInterface=false
 target16.type=ClassTarget
 target16.typeParameters=
+<<<<<<< HEAD
 target16.width=80
 target16.x=520
+=======
+target16.width=140
+target16.x=540
+>>>>>>> d29b0616e9f701d5d4e04d6db888a3b186cdadc4
 target16.y=470
 target17.editor.height=700
 target17.editor.width=900
@@ -292,10 +317,10 @@ target4.typeParameters=
 target4.width=80
 target4.x=740
 target4.y=50
-target5.editor.height=700
+target5.editor.height=666
 target5.editor.width=900
 target5.editor.x=32
-target5.editor.y=12
+target5.editor.y=46
 target5.height=50
 target5.name=KortingskaartHouder
 target5.naviview.expanded=false
@@ -355,5 +380,5 @@ target9.showInterface=false
 target9.type=ClassTarget
 target9.typeParameters=
 target9.width=80
-target9.x=330
-target9.y=410
+target9.x=370
+target9.y=400
