@@ -7,14 +7,6 @@ public class KantineSimulatie {
     private KantineAanbod kantineaanbod;
     // random generator
     private Random random;
-    // aantal artikelen
-    private static int aantal_artikelen = 4;
-    // artikelen
-    private static  String[] artikelnamen;
-        
-    // prijzen
-    private static double[] artikelprijzen;
-        
     // minimum en maximum aantal artikelen per soort
     private static final int MIN_ARTIKELEN_PER_SOORT=10000;
     private static final int MAX_ARTIKELEN_PER_SOORT=20000;
@@ -32,16 +24,10 @@ public class KantineSimulatie {
      * Constructor
      * @param int aantalartikelen, string[] artikelNamen, doublle[] artikelPrijzen
      */
-    public KantineSimulatie(int aantalArtikelen, String[] artikelNamen, double[] artikelPrijzen){
+    public KantineSimulatie(){
         kantine=new Kantine();
         random=new Random();
-        aantal_artikelen = aantalArtikelen;
-        int[] hoeveelheden=getRandomArray(
-                aantal_artikelen,MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
-        artikelnamen = artikelNamen;
-        artikelprijzen = artikelPrijzen;
-        kantineaanbod=new KantineAanbod(artikelnamen, artikelprijzen,
-            hoeveelheden);
+        kantineaanbod=new KantineAanbod();
         kantine.setKantineAanbod(kantineaanbod);
     }
 
@@ -83,9 +69,16 @@ public class KantineSimulatie {
     private String[] geefArtikelNamen(int[] indexen) {
         String[] artikelen=new String[indexen.length];
         for(int i=0;i<indexen.length;i++) {
-            artikelen[i]=artikelnamen[indexen[i]];
+            artikelen[i]=kantineaanbod.getArtikelNamen()[indexen[i]];
         }
         return artikelen;
+    }
+    
+    /**
+     * Voegt nieuw artikel toe aan kantine aanbod.
+     */
+    public void maakNieuwArtikel(String naam, double prijs) {
+        kantineaanbod.addArtikel(naam, prijs, getRandomValue(MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT));
     }
 
     /**
@@ -94,6 +87,10 @@ public class KantineSimulatie {
      * @param dagen
      */
     public void simuleer(int dagen) {
+        if(kantineaanbod.getAantalArtikelen() == 0) {
+            System.err.println("Je moet artikelen toevoegen voordat je kunt beginnen met simuleren.");
+            return;
+        }
         int[] aantalPerDag = new int[dagen];
         double[] omzetPerDag = new double[dagen];
         // for lus voor dagen
@@ -135,7 +132,7 @@ public class KantineSimulatie {
         Dienblad dienblad = new Dienblad();
         persoon.pakDienblad(dienblad);
         int aantalartikelen=getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
-        int[] tepakken=getRandomArray(aantalartikelen, 0, aantal_artikelen-1);
+        int[] tepakken=getRandomArray(aantalartikelen, 0, kantineaanbod.getAantalArtikelen()-1);
         String[] artikelen=geefArtikelNamen(tepakken);
         kantine.loopPakSluitAan(persoon, artikelen);
     }

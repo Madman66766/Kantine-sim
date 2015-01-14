@@ -25,11 +25,11 @@ public class Persoon
         setGeslacht('O');
         dienblad = null;
         betaalwijze = new Pinpas();
-        betaalwijze.setSaldo(10.0);
-        /*if(betaalwijze instanceof Pinpas) {
+        betaalwijze.setSaldo(20.0);
+        if(betaalwijze instanceof Pinpas) {
             Pinpas pinpas = (Pinpas)betaalwijze; 
             pinpas.setKredietLimiet(50.0);
-        }*/
+        }
     }
     
     /**

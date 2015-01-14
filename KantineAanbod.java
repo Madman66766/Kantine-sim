@@ -1,9 +1,14 @@
 import java.util.*;
 
 public class KantineAanbod {
+    private static final int MAX_AANTAL_ARTIKELEN = 100;
     private HashMap<String, ArrayList<Artikel>> aanbod;
     private HashMap<String, Integer> beginHoeveelheid;
     private HashMap<String, Integer> hoeVaakGevuld;
+    private String[] artikelNamen = new String[MAX_AANTAL_ARTIKELEN];
+    private double[] artikelPrijzen = new double[MAX_AANTAL_ARTIKELEN];
+    private int[] artikelHoeveelheden = new int[MAX_AANTAL_ARTIKELEN];
+    private int aantalArtikelen;
     
     /**
      * Constructor. Het eerste argument is een lijst met artikelnamen,
@@ -11,21 +16,11 @@ public class KantineAanbod {
      * is een lijst met hoeveelheden. Let op: de dimensies van de drie arrays
      * moeten wel gelijk zijn!
      */
-    public KantineAanbod(String[] artikelnaam, double[] prijs, int[] hoeveelheid) {
+    public KantineAanbod() {
         aanbod=new HashMap<String, ArrayList<Artikel>>();
         beginHoeveelheid = new HashMap<String, Integer>();
         hoeVaakGevuld = new HashMap<String, Integer>();
-        for(int i=0;i<artikelnaam.length;i++) 
-        {
-            ArrayList<Artikel> artikelen=new ArrayList<Artikel>();
-            for(int j=0;j<hoeveelheid[i];j++) 
-            {
-                artikelen.add(new Artikel(artikelnaam[i], prijs[i]));
-            }
-            aanbod.put(artikelnaam[i], artikelen);
-            beginHoeveelheid.put(artikelnaam[i], hoeveelheid[i]);
-            hoeVaakGevuld.put(artikelnaam[i], 0);
-        }
+        aantalArtikelen = 0;
     }
 
     /**
@@ -91,5 +86,64 @@ public class KantineAanbod {
      */
     public Artikel getArtikel(String naam) {
         return getArtikel(getArrayList(naam));
+    }
+    
+    /**
+     * Maakt nieuw artikel aan en voegt toe aan artikelen.
+     */
+    public void addArtikel(String naam, double prijs, int hoeveelheid) {
+        for(int i = 0; i < artikelNamen.length; i++) {
+            if(artikelNamen[i] == naam) {
+                System.err.println("Er bestaat al een artikel met dezelfde naam!");
+                return;
+            }
+        }
+        ArrayList<Artikel> artikelen = new ArrayList<Artikel>();
+        for(int i = 0; i < hoeveelheid; i++) {
+            artikelen.add(new Artikel(naam, prijs));
+        }
+        aanbod.put(naam, artikelen);
+        beginHoeveelheid.put(naam, hoeveelheid);
+        hoeVaakGevuld.put(naam, 0);
+        artikelNamen[aantalArtikelen] = naam;
+        artikelPrijzen[aantalArtikelen] = prijs;
+        artikelHoeveelheden[aantalArtikelen] = hoeveelheid;
+        aantalArtikelen++;
+    }
+    
+    /**
+     * Returns artikel namen
+     * 
+     * @return artikelNamen
+     */
+    public String[] getArtikelNamen() {
+        return artikelNamen;
+    }
+    
+    /**
+     * Returns artikel prijzen
+     * 
+     * @return artikelPrijzen
+     */
+    public double[] getArtikelPrijzen() {
+        return artikelPrijzen;
+    }
+    
+    /**
+     * Returns artikel hoeveelheden
+     * 
+     * @return artikelHoeveelheden
+     */
+    public int[] getArtikelHoeveelheden() {
+        return artikelHoeveelheden;
+    }
+    
+    /**
+     * Returns aantal artikelen
+     * 
+     * @return aantalArtikelen
+     */
+    public int getAantalArtikelen() {
+        return aantalArtikelen;
     }
 }

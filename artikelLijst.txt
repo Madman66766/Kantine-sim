@@ -1,0 +1,2 @@
+artikel = Broodje_kebab	4.00
+[ENDOFARTIKELLIJST]

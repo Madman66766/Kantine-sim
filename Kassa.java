@@ -35,6 +35,10 @@ public class Kassa {
         while(itr.hasNext()) {
             Artikel i = itr.next();
             aantal++;
+            if(i == null)
+            {
+                System.err.println("artikel i was null");
+            }
             totaal += i.getPrijs();
         }
         if(persoon instanceof KortingskaartHouder) {
