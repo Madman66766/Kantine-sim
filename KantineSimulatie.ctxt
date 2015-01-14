@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.params=
-comment0.target=KantineSimulatie()
-comment0.text=\r\n\ Constructor\r\n
+comment0.params=aantalArtikelen\ artikelNamen\ artikelPrijzen
+comment0.target=KantineSimulatie(int,\ java.lang.String[],\ double[])
+comment0.text=\r\n\ Constructor\r\n\ @param\ int\ aantalartikelen,\ string[]\ artikelNamen,\ doublle[]\ artikelPrijzen\r\n
 comment1.params=lengte\ min\ max
 comment1.target=int[]\ getRandomArray(int,\ int,\ int)
 comment1.text=\r\n\ Methode\ om\ een\ array\ van\ random\ getallen\ liggend\ tussen\ min\ en\r\n\ \ \ \ max\r\n\ van\ de\ gegeven\ lengte\ te\ genereren\r\n\ @param\ lengte\r\n\ @param\ min\r\n\ @param\ max\r\n\ @return\ De\ array\ met\ random\ getallen\r\n

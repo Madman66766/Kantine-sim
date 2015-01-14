@@ -8,14 +8,13 @@ public class KantineSimulatie {
     // random generator
     private Random random;
     // aantal artikelen
-    private static final int AANTAL_ARTIKELEN=4;
+    private static int aantal_artikelen = 4;
     // artikelen
-    private static final String[] artikelnamen=
-        new String[] {"Koffie","Broodje pindakaas", "Broodje kaas",
-            "Appelsap"};
+    private static  String[] artikelnamen;
+        
     // prijzen
-    private static double[] artikelprijzen=
-        new double[]{1.50, 2.10, 1.65, 1.65};
+    private static double[] artikelprijzen;
+        
     // minimum en maximum aantal artikelen per soort
     private static final int MIN_ARTIKELEN_PER_SOORT=10000;
     private static final int MAX_ARTIKELEN_PER_SOORT=20000;
@@ -31,12 +30,16 @@ public class KantineSimulatie {
     //private static final int KANTINEMEDEWERKER_KANS = 1;
     /**
      * Constructor
+     * @param int aantalartikelen, string[] artikelNamen, doublle[] artikelPrijzen
      */
-    public KantineSimulatie(){
+    public KantineSimulatie(int aantalArtikelen, String[] artikelNamen, double[] artikelPrijzen){
         kantine=new Kantine();
         random=new Random();
+        aantal_artikelen = aantalArtikelen;
         int[] hoeveelheden=getRandomArray(
-                AANTAL_ARTIKELEN,MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
+                aantal_artikelen,MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
+        artikelnamen = artikelNamen;
+        artikelprijzen = artikelPrijzen;
         kantineaanbod=new KantineAanbod(artikelnamen, artikelprijzen,
             hoeveelheden);
         kantine.setKantineAanbod(kantineaanbod);
@@ -132,7 +135,7 @@ public class KantineSimulatie {
         Dienblad dienblad = new Dienblad();
         persoon.pakDienblad(dienblad);
         int aantalartikelen=getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
-        int[] tepakken=getRandomArray(aantalartikelen, 0, AANTAL_ARTIKELEN-1);
+        int[] tepakken=getRandomArray(aantalartikelen, 0, aantal_artikelen-1);
         String[] artikelen=geefArtikelNamen(tepakken);
         kantine.loopPakSluitAan(persoon, artikelen);
     }
